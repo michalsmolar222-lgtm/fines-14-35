@@ -1,0 +1,1132 @@
+/* ====================================================================
+   FINES Konfigurátor – Premium UI v3.0
+   ====================================================================
+   Design System: Glassmorphism + FINES Corporate Identity
+   Colors: FINES Red #dc2626 / Deep Blue #0f172a / Accent Blue #2563eb
+   ==================================================================== */
+
+/* ── Google Fonts ─────────────────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+/* ── Design Tokens ────────────────────────────────────────────────── */
+:root {
+    /* Brand */
+    --fines-red: #dc2626;
+    --fines-red-light: #fca5a5;
+    --fines-red-dark: #991b1b;
+    --fines-blue: #1e3a8a;
+    --fines-blue-light: #3b82f6;
+    --fines-blue-accent: #2563eb;
+    --fines-blue-pale: #dbeafe;
+    --fines-blue-glow: rgba(37, 99, 235, 0.15);
+
+    /* Neutrals */
+    --slate-50: #f8fafc;
+    --slate-100: #f1f5f9;
+    --slate-200: #e2e8f0;
+    --slate-300: #cbd5e1;
+    --slate-400: #94a3b8;
+    --slate-500: #64748b;
+    --slate-600: #475569;
+    --slate-700: #334155;
+    --slate-800: #1e293b;
+    --slate-900: #0f172a;
+
+    /* Functional */
+    --success: #059669;
+    --success-light: #d1fae5;
+    --warning: #d97706;
+    --warning-light: #fef3c7;
+    --danger: #dc2626;
+    --danger-light: #fee2e2;
+
+    /* Surfaces */
+    --surface-primary: rgba(255, 255, 255, 0.72);
+    --surface-elevated: rgba(255, 255, 255, 0.85);
+    --surface-glass: rgba(255, 255, 255, 0.45);
+    --surface-glass-border: rgba(255, 255, 255, 0.6);
+
+    /* Shadows */
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.06);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.06), 0 2px 4px rgba(0, 0, 0, 0.04);
+    --shadow-lg: 0 8px 30px rgba(0, 0, 0, 0.08), 0 4px 8px rgba(0, 0, 0, 0.04);
+    --shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.06);
+    --shadow-blue: 0 4px 20px rgba(30, 58, 138, 0.18);
+    --shadow-red: 0 4px 20px rgba(220, 38, 38, 0.18);
+
+    /* Radii */
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    --radius-xl: 20px;
+    --radius-full: 9999px;
+
+    /* Transitions */
+    --transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-base: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-spring: 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* ── Keyframes ────────────────────────────────────────────────────── */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+@keyframes slideDown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50%      { transform: scale(1.03); }
+}
+
+@keyframes shimmer {
+    0%   { background-position: -200% center; }
+    100% { background-position: 200% center; }
+}
+
+@keyframes breathe {
+    0%, 100% { opacity: 0.6; transform: scale(1); }
+    50%      { opacity: 1; transform: scale(1.08); }
+}
+
+@keyframes gradientShift {
+    0%   { background-position: 0% 50%; }
+    50%  { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes borderGlow {
+    0%, 100% { border-color: var(--fines-blue-light); box-shadow: 0 0 8px var(--fines-blue-glow); }
+    50%      { border-color: var(--fines-blue-accent); box-shadow: 0 0 16px var(--fines-blue-glow); }
+}
+
+/* ── Hide Streamlit Chrome ────────────────────────────────────────── */
+#MainMenu { visibility: hidden; }
+footer    { visibility: hidden; }
+header    { visibility: hidden; }
+
+/* ── Global Typography ────────────────────────────────────────────── */
+html, body, [class*="css"] {
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif !important;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Page Background ──────────────────────────────────────────────── */
+.stApp {
+    background: 
+        radial-gradient(ellipse at 20% 0%, rgba(219, 234, 254, 0.4) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 100%, rgba(241, 245, 249, 0.6) 0%, transparent 50%),
+        linear-gradient(165deg, #f0f4ff 0%, #f8fafc 40%, #f1f5f9 70%, #eef2ff 100%);
+    min-height: 100vh;
+}
+
+/* ── Main Container ───────────────────────────────────────────────── */
+.block-container {
+    padding-top: 1rem !important;
+    padding-bottom: 4rem !important;
+    max-width: 1440px;
+    animation: fadeIn 0.4s ease-out;
+}
+
+/* ====================================================================
+   HEADER – Premium Gradient Banner
+   ==================================================================== */
+.fines-header {
+    display: flex;
+    align-items: center;
+    background: linear-gradient(135deg, #0f172a 0%, #1e2d5a 35%, #1e3a8a 65%, #1d4ed8 100%);
+    background-size: 200% 200%;
+    padding: 20px 32px;
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-xl), inset 0 1px 0 rgba(255,255,255,0.08);
+    margin-bottom: 12px;
+    position: relative;
+    overflow: hidden;
+    animation: fadeInUp 0.5s ease-out;
+}
+
+.fines-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 10% 50%, rgba(220, 38, 38, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 90% 50%, rgba(59, 130, 246, 0.1) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+.fines-header-logo {
+    height: 52px;
+    margin-right: 20px;
+    filter: drop-shadow(0 2px 8px rgba(0,0,0,0.3));
+    transition: transform var(--transition-base);
+}
+
+.fines-header-logo:hover {
+    transform: scale(1.05);
+}
+
+.fines-header-subtitle {
+    color: #93c5fd;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    margin-bottom: 2px;
+}
+
+.fines-header-title {
+    color: white;
+    font-size: 1.65rem;
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: -0.4px;
+    text-shadow: 0 2px 12px rgba(0,0,0,0.2);
+}
+
+.fines-header-meta {
+    margin-left: auto;
+    text-align: right;
+    position: relative;
+    z-index: 1;
+}
+
+.fines-header-version {
+    display: inline-block;
+    background: rgba(255,255,255,0.12);
+    backdrop-filter: blur(8px);
+    color: #bfdbfe;
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: var(--radius-full);
+    border: 1px solid rgba(255,255,255,0.15);
+    letter-spacing: 0.5px;
+    margin-bottom: 4px;
+}
+
+.fines-header-tagline {
+    color: rgba(191, 219, 254, 0.7);
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+}
+
+/* ====================================================================
+   NAVIGATION – Stepper Style
+   ==================================================================== */
+div[role="radiogroup"] {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    background: var(--surface-elevated);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    padding: 6px;
+    border-radius: var(--radius-lg);
+    width: 100%;
+    box-shadow: var(--shadow-md), inset 0 1px 0 rgba(255,255,255,0.9);
+    border: 1px solid var(--slate-200);
+    animation: fadeInUp 0.5s ease-out 0.1s both;
+}
+
+div[role="radiogroup"] > label {
+    flex: 1;
+    background-color: transparent;
+    padding: 12px 20px;
+    border-radius: var(--radius-md);
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.88rem;
+    color: var(--slate-500);
+    transition: all var(--transition-base);
+    white-space: nowrap;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+div[role="radiogroup"] > label::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: var(--radius-md);
+    opacity: 0;
+    background: linear-gradient(135deg, var(--fines-blue), var(--fines-blue-accent));
+    transition: opacity var(--transition-base);
+    z-index: -1;
+}
+
+div[role="radiogroup"] > label:hover {
+    color: var(--fines-blue);
+    background-color: rgba(30, 58, 138, 0.04);
+    transform: translateY(-1px);
+}
+
+/* Aktívna záložka */
+div[role="radiogroup"] > label[data-baseweb="radio"]:has(input:checked),
+div[role="radiogroup"] > label:has(input[type="radio"]:checked) {
+    background: linear-gradient(135deg, var(--fines-blue) 0%, var(--fines-blue-accent) 100%);
+    color: white !important;
+    box-shadow: var(--shadow-blue);
+    transform: translateY(-1px);
+}
+
+div[role="radiogroup"] > label[data-baseweb="radio"]:has(input:checked)::before,
+div[role="radiogroup"] > label:has(input[type="radio"]:checked)::before {
+    opacity: 0;
+}
+
+/* ====================================================================
+   STEPPER – Visual Step Indicator (injected via HTML)
+   ==================================================================== */
+.stepper-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    padding: 16px 24px;
+    margin: 4px 0 16px 0;
+    animation: fadeInUp 0.4s ease-out 0.15s both;
+}
+
+.stepper-step {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 20px;
+    border-radius: var(--radius-full);
+    transition: all var(--transition-base);
+    cursor: default;
+    position: relative;
+}
+
+.stepper-step.active {
+    background: linear-gradient(135deg, var(--fines-blue), var(--fines-blue-accent));
+    box-shadow: var(--shadow-blue);
+}
+
+.stepper-step.done {
+    background: var(--success-light);
+}
+
+.stepper-circle {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.85rem;
+    flex-shrink: 0;
+    transition: all var(--transition-base);
+}
+
+.stepper-step.active .stepper-circle {
+    background: white;
+    color: var(--fines-blue);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+}
+
+.stepper-step.inactive .stepper-circle {
+    background: var(--slate-200);
+    color: var(--slate-500);
+}
+
+.stepper-step.done .stepper-circle {
+    background: var(--success);
+    color: white;
+}
+
+.stepper-label {
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.2px;
+}
+
+.stepper-step.active .stepper-label { color: white; }
+.stepper-step.inactive .stepper-label { color: var(--slate-400); }
+.stepper-step.done .stepper-label { color: var(--success); }
+
+.stepper-connector {
+    width: 40px;
+    height: 2px;
+    background: var(--slate-200);
+    margin: 0 4px;
+    border-radius: 1px;
+    transition: background var(--transition-base);
+}
+
+.stepper-connector.done {
+    background: var(--success);
+}
+
+/* ====================================================================
+   BUTTONS
+   ==================================================================== */
+.stButton > button {
+    border-radius: var(--radius-md) !important;
+    border: none !important;
+    background: linear-gradient(135deg, var(--fines-blue) 0%, var(--fines-blue-accent) 100%) !important;
+    color: white !important;
+    font-family: 'Inter', sans-serif !important;
+    font-weight: 600 !important;
+    font-size: 0.875rem !important;
+    padding: 10px 24px !important;
+    transition: all var(--transition-base) !important;
+    box-shadow: var(--shadow-blue) !important;
+    letter-spacing: 0.02em !important;
+    position: relative;
+    overflow: hidden;
+}
+
+.stButton > button::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,0.15), transparent);
+    opacity: 0;
+    transition: opacity var(--transition-fast);
+}
+
+.stButton > button:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 8px 24px rgba(30, 58, 138, 0.3) !important;
+}
+
+.stButton > button:hover::after {
+    opacity: 1;
+}
+
+.stButton > button:active {
+    transform: translateY(0) !important;
+    box-shadow: 0 2px 8px rgba(30, 58, 138, 0.2) !important;
+}
+
+.stButton > button:focus:not(:active) {
+    border-color: transparent !important;
+    outline: 2px solid var(--fines-blue-glow) !important;
+    outline-offset: 2px;
+}
+
+/* Secondary buttons */
+button[kind="secondary"] {
+    background: var(--surface-elevated) !important;
+    color: var(--slate-700) !important;
+    border: 1.5px solid var(--slate-200) !important;
+    box-shadow: var(--shadow-sm) !important;
+    backdrop-filter: blur(8px) !important;
+}
+
+button[kind="secondary"]:hover {
+    background: white !important;
+    border-color: var(--slate-300) !important;
+    color: var(--slate-900) !important;
+    box-shadow: var(--shadow-md) !important;
+    transform: translateY(-1px) !important;
+}
+
+/* Danger buttons (Zmazať/Odstrániť) */
+button[kind="secondary"]:has(div:contains("Zmazať")),
+button[kind="secondary"]:has(div:contains("Odstrániť")) {
+    color: var(--danger) !important;
+    border-color: var(--fines-red-light) !important;
+}
+
+button[kind="secondary"]:has(div:contains("Zmazať")):hover,
+button[kind="secondary"]:has(div:contains("Odstrániť")):hover {
+    background: var(--danger-light) !important;
+    border-color: var(--danger) !important;
+    box-shadow: var(--shadow-red) !important;
+}
+
+/* ====================================================================
+   METRICS – Price Boxes
+   ==================================================================== */
+[data-testid="stMetric"] {
+    background: var(--surface-elevated);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--slate-200);
+    border-radius: var(--radius-lg);
+    padding: 16px 20px;
+    box-shadow: var(--shadow-sm);
+    transition: all var(--transition-base);
+}
+
+[data-testid="stMetric"]:hover {
+    box-shadow: var(--shadow-md);
+    border-color: var(--fines-blue-light);
+    transform: translateY(-2px);
+}
+
+[data-testid="stMetricValue"] {
+    font-family: 'Inter', sans-serif !important;
+    font-size: 1.75rem !important;
+    font-weight: 800 !important;
+    color: var(--fines-blue) !important;
+    background: linear-gradient(135deg, #eff6ff, #dbeafe);
+    padding: 8px 16px;
+    border-radius: var(--radius-md);
+    display: inline-block;
+    border: 1px solid var(--fines-blue-pale);
+    letter-spacing: -0.3px;
+}
+
+[data-testid="stMetricLabel"] {
+    font-family: 'Inter', sans-serif !important;
+    font-size: 0.75rem !important;
+    font-weight: 600 !important;
+    color: var(--slate-500) !important;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+}
+
+/* ====================================================================
+   INPUTS & SELECTBOXES
+   ==================================================================== */
+.stTextInput > div > div > input,
+.stNumberInput > div > div > input,
+.stDateInput > div > div > input,
+.stTextArea > div > textarea {
+    border-radius: var(--radius-sm) !important;
+    border: 1.5px solid var(--slate-200) !important;
+    font-family: 'Inter', sans-serif !important;
+    font-size: 0.9rem !important;
+    padding: 10px 14px !important;
+    transition: all var(--transition-base) !important;
+    background: white !important;
+}
+
+.stTextInput > div > div > input:focus,
+.stNumberInput > div > div > input:focus,
+.stDateInput > div > div > input:focus,
+.stTextArea > div > textarea:focus {
+    border-color: var(--fines-blue-light) !important;
+    box-shadow: 0 0 0 3px var(--fines-blue-glow) !important;
+    outline: none !important;
+}
+
+.stSelectbox > div > div {
+    border-radius: var(--radius-sm) !important;
+    border: 1.5px solid var(--slate-200) !important;
+    font-family: 'Inter', sans-serif !important;
+    transition: all var(--transition-base) !important;
+}
+
+.stSelectbox > div > div:hover {
+    border-color: var(--slate-300) !important;
+}
+
+/* Input labels */
+.stTextInput label,
+.stNumberInput label,
+.stSelectbox label,
+.stTextArea label,
+.stDateInput label,
+.stFileUploader label {
+    font-family: 'Inter', sans-serif !important;
+    font-weight: 600 !important;
+    font-size: 0.82rem !important;
+    color: var(--slate-700) !important;
+    letter-spacing: 0.2px;
+}
+
+/* ====================================================================
+   EXPANDER
+   ==================================================================== */
+.streamlit-expanderHeader {
+    font-family: 'Inter', sans-serif !important;
+    font-weight: 600 !important;
+    font-size: 1rem !important;
+    color: var(--slate-800) !important;
+    background: var(--surface-elevated) !important;
+    border-radius: var(--radius-md) !important;
+    padding: 14px 18px !important;
+    border: 1px solid var(--slate-200) !important;
+    transition: all var(--transition-base) !important;
+}
+
+.streamlit-expanderHeader:hover {
+    background: white !important;
+    box-shadow: var(--shadow-sm) !important;
+    border-color: var(--fines-blue-light) !important;
+}
+
+details[open] .streamlit-expanderHeader {
+    border-color: var(--fines-blue-light) !important;
+    box-shadow: 0 0 0 3px var(--fines-blue-glow) !important;
+}
+
+/* ====================================================================
+   ALERTS & STATUS MESSAGES
+   ==================================================================== */
+.stAlert {
+    border-radius: var(--radius-md) !important;
+    border: none !important;
+    box-shadow: var(--shadow-sm) !important;
+    font-family: 'Inter', sans-serif !important;
+    animation: slideDown 0.3s ease-out;
+}
+
+div[data-testid="stNotification"] {
+    border-radius: var(--radius-md) !important;
+    animation: slideDown 0.3s ease-out;
+}
+
+/* ====================================================================
+   HEADINGS
+   ==================================================================== */
+h1 {
+    font-family: 'Inter', sans-serif !important;
+    font-weight: 800 !important;
+    color: var(--slate-900) !important;
+    letter-spacing: -0.6px !important;
+    line-height: 1.2 !important;
+}
+
+h2 {
+    font-family: 'Inter', sans-serif !important;
+    font-weight: 700 !important;
+    color: var(--slate-800) !important;
+    letter-spacing: -0.3px !important;
+}
+
+h3 {
+    font-family: 'Inter', sans-serif !important;
+    font-weight: 700 !important;
+    color: var(--slate-700) !important;
+}
+
+/* ====================================================================
+   SEPARATOR
+   ==================================================================== */
+hr {
+    border: none !important;
+    border-top: 1px solid var(--slate-200) !important;
+    margin: 1.2rem 0 !important;
+    opacity: 0.7;
+}
+
+/* ====================================================================
+   CART – Glassmorphism Cards
+   ==================================================================== */
+.cart-card {
+    background: var(--surface-elevated);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--surface-glass-border);
+    border-radius: var(--radius-xl);
+    padding: 24px 28px;
+    margin-bottom: 16px;
+    box-shadow: var(--shadow-md);
+    transition: all var(--transition-base);
+    animation: fadeInUp 0.4s ease-out both;
+    position: relative;
+    overflow: hidden;
+}
+
+.cart-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--fines-blue), var(--fines-blue-accent), var(--fines-blue-light));
+    border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+    opacity: 0;
+    transition: opacity var(--transition-base);
+}
+
+.cart-card:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-3px);
+    border-color: var(--fines-blue-pale);
+}
+
+.cart-card:hover::before {
+    opacity: 1;
+}
+
+.cart-card-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--fines-blue), var(--fines-blue-accent));
+    color: white;
+    font-weight: 700;
+    font-size: 0.8rem;
+    margin-right: 10px;
+    flex-shrink: 0;
+    box-shadow: 0 2px 8px rgba(30, 58, 138, 0.25);
+}
+
+.cart-card-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--slate-800);
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.cart-card-price {
+    display: inline-block;
+    background: linear-gradient(135deg, #eff6ff, #dbeafe);
+    padding: 4px 14px;
+    border-radius: var(--radius-full);
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: var(--fines-blue);
+    border: 1px solid var(--fines-blue-pale);
+}
+
+.cart-card-price-original {
+    color: var(--slate-400);
+    text-decoration: line-through;
+    font-size: 0.85rem;
+    font-weight: 500;
+    margin-right: 8px;
+}
+
+/* ====================================================================
+   TOTAL PRICE BOX – Animated Gradient Border
+   ==================================================================== */
+.total-price-box {
+    background: linear-gradient(135deg, #eff6ff, #dbeafe, #e0e7ff);
+    background-size: 200% 200%;
+    padding: 28px 32px;
+    border-radius: var(--radius-xl);
+    border: 2px solid var(--fines-blue-light);
+    text-align: center;
+    margin: 16px 0;
+    box-shadow: var(--shadow-blue);
+    animation: gradientShift 6s ease infinite;
+    position: relative;
+    overflow: hidden;
+}
+
+.total-price-box::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(37, 99, 235, 0.04) 0%, transparent 70%);
+    animation: breathe 4s ease-in-out infinite;
+    pointer-events: none;
+}
+
+.total-price-box h2 {
+    color: var(--fines-blue) !important;
+    margin: 0 !important;
+    font-size: 2.2rem !important;
+    font-weight: 800 !important;
+    letter-spacing: -0.5px !important;
+    position: relative;
+    z-index: 1;
+}
+
+.total-price-box p {
+    color: var(--slate-500);
+    margin: 6px 0 0 0;
+    font-size: 0.85rem;
+    font-weight: 500;
+    position: relative;
+    z-index: 1;
+}
+
+/* ====================================================================
+   EMPTY CART – Animated State
+   ==================================================================== */
+.empty-cart {
+    text-align: center;
+    padding: 72px 40px;
+    background: var(--surface-elevated);
+    backdrop-filter: blur(16px);
+    border-radius: var(--radius-xl);
+    border: 2px dashed var(--slate-300);
+    margin: 24px 0;
+    transition: all var(--transition-base);
+    animation: fadeInUp 0.5s ease-out;
+}
+
+.empty-cart:hover {
+    border-color: var(--fines-blue-light);
+    background: rgba(255, 255, 255, 0.9);
+}
+
+.empty-cart-icon {
+    font-size: 4.5rem;
+    margin-bottom: 16px;
+    animation: breathe 3s ease-in-out infinite;
+    display: inline-block;
+}
+
+.empty-cart h3 {
+    color: var(--fines-blue) !important;
+    font-size: 1.4rem !important;
+    margin: 0 0 8px 0 !important;
+    font-weight: 700 !important;
+}
+
+.empty-cart p {
+    color: var(--slate-500);
+    font-size: 0.95rem;
+    margin: 0 0 28px 0;
+    max-width: 360px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.5;
+}
+
+/* ====================================================================
+   PRODUCT IMAGE CARD – Hover Zoom
+   ==================================================================== */
+.product-image-card {
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--slate-200);
+    transition: all var(--transition-base);
+    background: white;
+}
+
+.product-image-card:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-4px);
+    border-color: var(--fines-blue-pale);
+}
+
+.product-image-card img {
+    transition: transform var(--transition-slow);
+}
+
+.product-image-card:hover img {
+    transform: scale(1.05);
+}
+
+/* Streamlit images inside product cards */
+[data-testid="stImage"] {
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    transition: all var(--transition-base);
+}
+
+/* ====================================================================
+   CONFIG STEP – Numbered Steps in Components
+   ==================================================================== */
+.config-step {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 20px 0 12px 0;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--slate-100);
+}
+
+.config-step-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--fines-blue), var(--fines-blue-accent));
+    color: white;
+    font-weight: 700;
+    font-size: 0.85rem;
+    flex-shrink: 0;
+    box-shadow: 0 2px 8px rgba(30, 58, 138, 0.2);
+}
+
+.config-step-label {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--slate-800);
+    letter-spacing: -0.1px;
+}
+
+/* ====================================================================
+   PRICE TAG – Inline Price Display
+   ==================================================================== */
+.price-tag {
+    display: inline-block;
+    background: linear-gradient(135deg, #eff6ff, #dbeafe);
+    color: var(--fines-blue);
+    font-weight: 700;
+    font-size: 1rem;
+    padding: 4px 14px;
+    border-radius: var(--radius-full);
+    border: 1px solid var(--fines-blue-pale);
+    letter-spacing: -0.1px;
+}
+
+.price-tag-large {
+    font-size: 1.3rem;
+    padding: 6px 20px;
+}
+
+/* ====================================================================
+   ADMIN PANEL – Distinct Purple Tone
+   ==================================================================== */
+.admin-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: linear-gradient(135deg, #312e81, #4338ca, #6366f1);
+    padding: 18px 28px;
+    border-radius: var(--radius-lg);
+    margin-bottom: 20px;
+    box-shadow: 0 4px 20px rgba(99, 102, 241, 0.25);
+}
+
+.admin-header h2 {
+    color: white !important;
+    margin: 0 !important;
+    font-size: 1.3rem !important;
+}
+
+.admin-header p {
+    color: #c4b5fd;
+    margin: 0;
+    font-size: 0.85rem;
+}
+
+/* Admin metrics distinct style */
+.admin-section [data-testid="stMetric"] {
+    border-left: 3px solid #6366f1;
+}
+
+/* ====================================================================
+   FILE UPLOADER
+   ==================================================================== */
+[data-testid="stFileUploader"] {
+    border-radius: var(--radius-lg) !important;
+    border: 2px dashed var(--slate-300) !important;
+    padding: 12px !important;
+    transition: all var(--transition-base) !important;
+    background: var(--surface-primary) !important;
+}
+
+[data-testid="stFileUploader"]:hover {
+    border-color: var(--fines-blue-light) !important;
+    background: rgba(219, 234, 254, 0.15) !important;
+}
+
+/* ====================================================================
+   SPINNER
+   ==================================================================== */
+.stSpinner > div {
+    border-top-color: var(--fines-blue) !important;
+}
+
+/* ====================================================================
+   CHECKBOX & RADIO
+   ==================================================================== */
+.stCheckbox label,
+.stRadio label {
+    font-family: 'Inter', sans-serif !important;
+    font-weight: 500 !important;
+    transition: color var(--transition-fast) !important;
+}
+
+.stCheckbox label:hover,
+.stRadio label:hover {
+    color: var(--fines-blue) !important;
+}
+
+/* ====================================================================
+   DOWNLOAD BUTTON
+   ==================================================================== */
+.stDownloadButton > button {
+    border-radius: var(--radius-md) !important;
+    font-family: 'Inter', sans-serif !important;
+    font-weight: 600 !important;
+    transition: all var(--transition-base) !important;
+}
+
+/* ====================================================================
+   TABS (if used)
+   ==================================================================== */
+.stTabs [data-baseweb="tab-list"] {
+    gap: 4px;
+    background: var(--surface-elevated);
+    padding: 4px;
+    border-radius: var(--radius-md);
+}
+
+.stTabs [data-baseweb="tab"] {
+    border-radius: var(--radius-sm);
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    transition: all var(--transition-base);
+}
+
+/* ====================================================================
+   CUSTOM SCROLLBAR
+   ==================================================================== */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--slate-100);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--slate-300);
+    border-radius: 4px;
+    transition: background 0.2s;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--slate-400);
+}
+
+/* Firefox */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: var(--slate-300) var(--slate-100);
+}
+
+/* ====================================================================
+   RESPONSIVE
+   ==================================================================== */
+@media (max-width: 768px) {
+    .fines-header {
+        flex-direction: column;
+        text-align: center;
+        padding: 16px 20px;
+        gap: 12px;
+    }
+
+    .fines-header-logo {
+        margin-right: 0;
+        height: 40px;
+    }
+
+    .fines-header-meta {
+        margin-left: 0;
+        text-align: center;
+    }
+
+    .fines-header-title {
+        font-size: 1.3rem;
+    }
+
+    div[role="radiogroup"] {
+        flex-direction: column;
+    }
+
+    .stepper-nav {
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .stepper-connector {
+        display: none;
+    }
+
+    .cart-card {
+        padding: 16px 18px;
+    }
+
+    .total-price-box h2 {
+        font-size: 1.6rem !important;
+    }
+}
+
+/* ====================================================================
+   ANIMATION DELAYS for staggered effects
+   ==================================================================== */
+.cart-card:nth-child(1) { animation-delay: 0s; }
+.cart-card:nth-child(2) { animation-delay: 0.08s; }
+.cart-card:nth-child(3) { animation-delay: 0.16s; }
+.cart-card:nth-child(4) { animation-delay: 0.24s; }
+.cart-card:nth-child(5) { animation-delay: 0.32s; }
+
+/* ====================================================================
+   PLACEHOLDER for missing images
+   ==================================================================== */
+.image-placeholder {
+    height: 200px;
+    background: linear-gradient(135deg, var(--slate-50), var(--slate-100));
+    border: 2px dashed var(--slate-300);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-lg);
+    color: var(--slate-400);
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-align: center;
+    transition: all var(--transition-base);
+}
+
+.image-placeholder:hover {
+    border-color: var(--fines-blue-light);
+    color: var(--fines-blue);
+    background: linear-gradient(135deg, #eff6ff, #f8fafc);
+}
+
+/* ====================================================================
+   SUCCESS COMPOSITION BOX
+   ==================================================================== */
+.composition-success {
+    background: linear-gradient(135deg, var(--success-light), #ecfdf5);
+    border: 1px solid #86efac;
+    border-radius: var(--radius-lg);
+    padding: 16px 20px;
+    margin: 12px 0;
+    box-shadow: 0 2px 12px rgba(5, 150, 105, 0.08);
+    animation: fadeInUp 0.3s ease-out;
+}
+
+.composition-success strong {
+    color: var(--success);
+}
+
+/* ====================================================================
+   TOOLTIP-LIKE CAPTIONS
+   ==================================================================== */
+.stCaption {
+    font-family: 'Inter', sans-serif !important;
+    color: var(--slate-500) !important;
+    font-size: 0.78rem !important;
+    line-height: 1.4 !important;
+}
+
+/* ====================================================================
+   SECTION DIVIDER (enhanced)
+   ==================================================================== */
+.section-divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--slate-200), transparent);
+    margin: 24px 0;
+    border: none;
+}
